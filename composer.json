@@ -3,7 +3,7 @@
         "phpunit/phpunit": "^9"
     },
     "scripts": {
-        "run-example": "php index.php",
+        "generate-report": "php index.php",
         "test": "vendor/bin/phpunit --testdox tests"
     },
     "require": {

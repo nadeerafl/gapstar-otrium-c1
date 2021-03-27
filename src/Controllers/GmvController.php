@@ -14,9 +14,15 @@ class GmvController {
      * @var GmvRepositoryInterface
      */
     private $gmv_repository;
+     /**
+     * @var ExportToCsv
+     */
     private $export_to_csv;
 
-    private $tax_percentage = VAT;
+    private $tax_percentage     = 0.21;
+    private $report_name_prefix = 'daily-turnover';
+    private $currency           = 'usd';
+
 
 
     public function __construct(GmvRepositoryInterface $gmv_repository, ExportToCsv $export_to_csv)
@@ -80,7 +86,7 @@ class GmvController {
      */
     private function formatCurrencyString(float $amount): string
     {
-        return CURRENCY .' '. number_format($amount, 2, ',', '.');
+        return $this->currency.' '. number_format($amount, 2, ',', '.');
     }
 
     /**
@@ -152,7 +158,7 @@ class GmvController {
      */
     private function getFilename(DateTime $from, DateTime $to): string
     {
-        return TURNOVER_REPORT_NAME_PREFIX.'-' . $from->format("Y-m-d") . "-" . $to->format("Y-m-d") . ".csv";
+        return $this->report_name_prefix.'-' . $from->format("Y-m-d") . "-" . $to->format("Y-m-d") . ".csv";
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Test\Controllers;
+namespace Test\Repository;
 
 use App\Repository\GmvRepository;
 use DateTime;
@@ -11,8 +11,8 @@ use PHPUnit\Framework\TestCase;
 
 class GmvRepositoryTest extends TestCase
 {
-     /**
-     * @var PDO|MockObject
+    /**
+     * @var PDO
      */
     private $mock_PDO;
 
