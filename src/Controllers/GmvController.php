@@ -7,6 +7,7 @@ use App\Config;
 use DateInterval;
 use DatePeriod;
 use App\Helpers\Export\ExportToCsv;
+use App\Exception\DailyTurnoverDataNotAvailableException;
 
 class GmvController {
 
@@ -42,6 +43,11 @@ class GmvController {
     {
         $turnovers          = $this->gmv_repository->searchByDateRange($from_date, $to_date);
         $formatted_data     = [];
+        
+        if (empty($turnovers)) {
+            throw new DailyTurnoverDataNotAvailableException();
+        }
+
         // Setup row data array for calculations
         $row_data           = [];
 
@@ -137,18 +143,21 @@ class GmvController {
      */
     public function generateDailyTurnoverReport(DateTime $from_date, DateTime $to_date)
     {
-        $turnovers = $this->getTurnoverByDateRange($from_date, $to_date);
+       // try {
+            $turnovers = $this->getTurnoverByDateRange($from_date, $to_date);
+            $filename   = $this->getFilename($from_date, $to_date);
 
-        if (empty($turnovers)) {
-            throw new TurnoverDataNotFoundException();
-        }
+            $columns    = $this->getColumns($from_date, $to_date);
+            $rows       = $this->prepareDataRows($turnovers);
 
-        $filename   = $this->getFilename($from_date, $to_date);
+            $this->export_to_csv->write($filename, $rows, $columns);
+        // }
+        // catch(\Exception $e){
+        //     echo 'Message: ' .$e->getMessage();
+        // }
+        
 
-        $columns    = $this->getColumns($from_date, $to_date);
-        $rows       = $this->prepareDataRows($turnovers);
-
-        $this->export_to_csv->write($filename, $rows, $columns);
+        
     }
 
     /**

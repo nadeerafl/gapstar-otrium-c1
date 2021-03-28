@@ -9,14 +9,19 @@ class ComposerStaticInit2b24b075aad34027a9137db33bc889c1
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '9e7a8ca9c2c682ec2704dd873a0e3618' => __DIR__ . '/..' . '/php-mock/php-mock/autoload.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '125bba9b2a34259a2ab4c8f405781876' => __DIR__ . '/..' . '/php-mock/php-mock-phpunit/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
+            'phpmock\\phpunit\\' => 16,
+            'phpmock\\integration\\' => 20,
+            'phpmock\\' => 8,
             'phpDocumentor\\Reflection\\' => 25,
         ),
         'W' => 
@@ -56,6 +61,19 @@ class ComposerStaticInit2b24b075aad34027a9137db33bc889c1
     );
 
     public static $prefixDirsPsr4 = array (
+        'phpmock\\phpunit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-mock/php-mock-phpunit/classes',
+        ),
+        'phpmock\\integration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-mock/php-mock-integration/classes',
+        ),
+        'phpmock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-mock/php-mock/classes',
+            1 => __DIR__ . '/..' . '/php-mock/php-mock/tests',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
