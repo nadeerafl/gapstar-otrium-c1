@@ -5,7 +5,8 @@
     },
     "scripts": {
         "generate-report": "php index.php",
-        "test": "vendor/bin/phpunit --testdox tests"
+        "test-unix": "./vendor/bin/phpunit --testdox tests",
+        "test-windows": ".\\vendor\\bin\\phpunit --testdox tests"
     },
     "require": {
         "vlucas/phpdotenv": "^5.3"
